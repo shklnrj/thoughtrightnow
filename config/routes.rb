@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :posts
   get 'authenticated/home'
   devise_for :users
   authenticated :user, ->(u) { true } do
