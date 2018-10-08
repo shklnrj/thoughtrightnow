@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12">
+      <% if @users.size > 0  %>
+              <% @users.each do |user| %>
+                <% if user.id!= current_user.id %>
+                  <% follower = Follower.new %>
+                  <%= form_with(model: follower) do |form| %>
+                    <% if follower.errors.any? %>
+                      <div id="error_explanation">
+                        <h2><%= pluralize(follower.errors.count, "error") %> prohibited you from following this user:</h2>
+
+                        <ul>
+                        <% follower.errors.full_messages.each do |message| %>
+                          <li><%= message %></li>
+                        <% end %>
+                        </ul>
+                      </div>
+                    <% end %>
+                    <em> <%= user.email %> </em>
+                    <%= form.hidden_field :user_id, value: user.id %>
+                    <%= form.hidden_field :follower_user_id, value: current_user.id %>
+
+                    <div class="actions">
+                      <br>
+                      <%= form.submit "Follow", class: "btn btn-primary"%>
+                    </div>
+                  <% end %>
+                <% end %>
+              <% end %>
+      <% else %>
+        We don't have any suggestions at the moment.
+        <br>
+        Wow!
+      <% end %>
+    </div>
+  </div>
+</div>
