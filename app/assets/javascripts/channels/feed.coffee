@@ -4,12 +4,11 @@ $(document).ready ->
     collection: -> $("[data-channel='feed_items']")
     connected: ->
       # Called when the subscription is ready for use on the server
-      alert("feed_id is #{feed_id}")
-
 
     disconnected: ->
       # Called when the subscription has been terminated by the server
 
     received: (data) ->
-      $('#feed').prepend data['message']
+      $('#feed_table').prepend("<tr><td>#{data['message']}</td><td>#{data['email']}</td></tr>");
+      $('#feed').prepend
       # Called when there's incoming data on the websocket for this channel
