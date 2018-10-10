@@ -26,6 +26,7 @@ class Post < ApplicationRecord
       # need to build feed here as heroku does not allow Sidekiq in free tier
       build_feed_in_sync(self.id)
       
+      # ideally we would build the feed in async mode
       #BuildFeedWorker.perform_async(self.id)
   end
 end

@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   resources :followers, only: [:create]
   get "authenticated/suggested_follows"
   get 'authenticated/home'
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
   authenticated :user, ->(u) { true } do
     root to: "authenticated#home"
   end
