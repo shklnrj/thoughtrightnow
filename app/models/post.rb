@@ -14,7 +14,7 @@ class Post < ApplicationRecord
     followers.each do |follower|
       Feed.create!(user_id: follower.follower_user_id, post_id: post_id)
       # now we can just push this feed item to the user's feed
-      ActionCable.server.broadcast("feed_#{follower_user_id}", message: post.content)
+      ActionCable.server.broadcast("feed_#{follower.follower_user_id}", message: post.content)
     end
   end
 
