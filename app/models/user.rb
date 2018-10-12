@@ -20,7 +20,7 @@ class User < ApplicationRecord
       if this_follower_follow_count >1
         number_of_times_to_delete_follow = this_follower_follow_count-1
         number_of_times_to_delete_follow.times do
-          Follower.where(user_id: user_id, follower_user_id: follower.follower_user_id).delete
+          Follower.where(user_id: user_id, follower_user_id: follower.follower_user_id).first.delete
         end
       end
     end
