@@ -7,8 +7,7 @@ class FollowersController < ApplicationController
         format.html { redirect_to root_path, notice: 'You are following this user now.' }
         format.json { render :show, status: :created, location: root_path }
       else
-        format.html { render :new }
-        format.json { render json: @follower.errors, status: :unprocessable_entity }
+        format.html { redirect_to root_path, notice: 'You are already following this user. Can not follow a user again.' }
       end
     end
   end
