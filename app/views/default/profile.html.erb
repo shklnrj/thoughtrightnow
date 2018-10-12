@@ -2,6 +2,10 @@
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12">
       <% if @profile %>
+        <p>
+          <h2>Feed for</h2>
+          <h3><%= @profile.username %> , <%= @profile.email %> </h3> <br>
+        </p>
         <input type="hidden" id="feed_id" name="feed_id" value="<%=@profile.id%>">
         </div>
         <table class="table table-striped" id="feed_table">

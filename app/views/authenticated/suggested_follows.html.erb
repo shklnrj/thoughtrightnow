@@ -17,12 +17,14 @@
                         </ul>
                       </div>
                     <% end %>
+                    <h3>
+                      <%= user.username %>
+                    </h3>
                     <em> <%= user.email %> </em>
                     <%= form.hidden_field :user_id, value: user.id %>
                     <%= form.hidden_field :follower_user_id, value: current_user.id %>
-
                     <div class="actions">
-                      <br>
+                      <%= link_to "See feed", user_feed_path(username: user.username), class: "btn btn-info" %> &nbsp; &nbsp;
                       <%= form.submit "Follow", class: "btn btn-primary"%>
                     </div>
                   <% end %>
