@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :followers
   has_one :feed
 
-  def remove_duplicate_follower(user_id)
+  def self.remove_duplicate_follower(user_id)
     # lets find all the followers of this user
     # for each follower, get the count. if the count is not 1
     # then make it 1
